@@ -283,10 +283,22 @@ def resolve_md_ref(source: Path, ref: str) -> Path | None:
     return candidates[0] if candidates else None
 
 
+EXCLUDE_DIRS = {
+    ".git",
+    "__pycache__",
+    # virtualenv directories — third-party package READMEs/prompts shouldn't be linted
+    ".env",
+    ".venv",
+    "venv",
+    "env",
+    "node_modules",
+}
+
+
 def iter_markdown_files() -> list[Path]:
     files: list[Path] = []
     for dirpath, dirnames, filenames in os.walk(ROOT):
-        dirnames[:] = [d for d in dirnames if d not in {".git", "__pycache__"}]
+        dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
         for filename in filenames:
             if filename.endswith(".md"):
                 files.append(Path(dirpath) / filename)

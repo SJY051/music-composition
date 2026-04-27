@@ -86,7 +86,7 @@ The script writes a timestamped pair of files to `benchmarks/results/`:
 - `v1.0-<timestamp>.md` — human-readable; includes prompt, all three responses per prompt
 - `v1.0-<timestamp>.jsonl` — one JSON record per (prompt, condition) for downstream analysis
 
-`benchmarks/results/` is `.gitignore`'d to keep raw runs out of the repo.
+`benchmarks/results/` is `.gitignore`'d to keep ad-hoc reruns out of the repo. The canonical v1.0 reference run is committed at `benchmarks/v1.0-run.md` and `benchmarks/v1.0-run.jsonl`.
 
 ### Cost estimate
 
