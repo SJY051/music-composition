@@ -29,7 +29,9 @@ For a manual install, clone the repository and point your agent at it (or copy `
 git clone https://github.com/SJY051/music-composition.git
 ```
 
-The skill works on any harness that reads the SKILL.md format — Claude Code, Claude Agent SDK, Claude.ai (skills feature), and most other current agent platforms.
+### Compatibility
+
+The skill follows the open **Agent Skills standard** — the SKILL.md + YAML frontmatter format used by both [Claude](https://code.claude.com/docs/en/skills.md) (Claude Code, Claude Agent SDK, Claude.ai skills) and [OpenAI](https://developers.openai.com/api/docs/guides/tools-skills) (Responses API `tools[].environment.skills`). It works on any harness that reads this format.
 
 ---
 

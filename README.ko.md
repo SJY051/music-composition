@@ -29,7 +29,9 @@ npx skills add SJY051/music-composition
 git clone https://github.com/SJY051/music-composition.git
 ```
 
-이 스킬은 SKILL.md 표준을 읽는 모든 하니스에서 작동한다 — Claude Code, Claude Agent SDK, Claude.ai (skills 기능), 그 외 대부분의 현재 에이전트 플랫폼 포함.
+### 호환성
+
+이 스킬은 open **Agent Skills 표준**을 따른다 — [Claude](https://code.claude.com/docs/en/skills.md)(Claude Code, Claude Agent SDK, Claude.ai skills 기능)와 [OpenAI](https://developers.openai.com/api/docs/guides/tools-skills)(Responses API `tools[].environment.skills`) 모두 공통으로 사용하는 SKILL.md + YAML frontmatter 포맷이다. 이 포맷을 읽는 모든 하니스에서 작동한다.
 
 ---
 
