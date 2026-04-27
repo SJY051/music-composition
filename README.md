@@ -1,4 +1,8 @@
+[English](./README.md) | [한국어](./README.ko.md)
+
 # Music Composition Agent Skill
+
+![Version](https://img.shields.io/badge/version-1.0-blue) ![Docs License](https://img.shields.io/badge/docs-CC%20BY%204.0-green) ![Code License](https://img.shields.io/badge/code-MIT-blue) ![Skill](https://img.shields.io/badge/AI%20skill-Claude%20compatible-orange)
 
 A modular knowledge and workflow skill for an AI music-composition assistant.
 

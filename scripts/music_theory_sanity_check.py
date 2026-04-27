@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-MD_PATH_RE = re.compile(r"(?<![\w./-])(?:\.\.?/)?[A-Za-z0-9_./#()\-]+\.md(?:#[A-Za-z0-9_./#()\-]+)?")
+MD_PATH_RE = re.compile(r"(?<![\w./-])(?:\.\.?/)?[A-Za-z0-9_./#\-]+\.md(?:#[A-Za-z0-9_./#\-]+)?")
 
 RISKY_PATTERNS = [
     (re.compile(r"\bexotic\b", re.I), "Avoid `exotic`; name the musical variable or cultural context."),
