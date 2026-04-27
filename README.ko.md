@@ -2,7 +2,7 @@
 
 # Music Composition Agent Skill
 
-![Version](https://img.shields.io/badge/version-1.0-blue) ![Docs License](https://img.shields.io/badge/docs-CC%20BY%204.0-green) ![Code License](https://img.shields.io/badge/code-MIT-blue) ![Skill](https://img.shields.io/badge/AI%20skill-Claude%20compatible-orange)
+![Version](https://img.shields.io/badge/version-1.0-blue) ![Docs License](https://img.shields.io/badge/docs-CC%20BY%204.0-green) ![Code License](https://img.shields.io/badge/code-MIT-blue) ![Compatibility](https://img.shields.io/badge/compatibility-any%20SKILL.md%20harness-orange)
 
 AI 작곡 어시스턴트를 위한 모듈식 지식 / 워크플로 스킬.
 
@@ -19,7 +19,7 @@ AI 에이전트가 다음과 같은 작업을 도와야 할 때 사용한다:
 
 - 작곡 브레인스토밍
 - 코드 진행과 화성 방향 잡기
-- 멜로디, 모티프, 프레이즈, 톱라인 작업
+- 멜로디, 모티프, 프레이즈, 탑라인 작업
 - 곡 형식, 전환, 서사 구조
 - 리듬, 그루브, 박자, 필
 - 오케스트레이션, 편곡, 보이싱, 악기 이디엄

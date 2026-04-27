@@ -240,6 +240,12 @@ def strip_code_blocks(text: str) -> str:
     return re.sub(r"```.*?```", "", text, flags=re.S)
 
 
+def strip_urls(text: str) -> str:
+    """Remove http(s) URLs so URL-encoded fragments like `%20SKILL.md`
+    aren't mis-parsed as file references."""
+    return re.sub(r"https?://[^\s)]+", "", text)
+
+
 def strip_anchor(path: str) -> str:
     return path.split("#", 1)[0]
 
@@ -300,7 +306,7 @@ def find_md_refs(text: str) -> set[str]:
 def check_links() -> list[str]:
     errors: list[str] = []
     for md in iter_markdown_files():
-        text = strip_code_blocks(md.read_text(encoding="utf-8"))
+        text = strip_urls(strip_code_blocks(md.read_text(encoding="utf-8")))
         for ref in sorted(find_md_refs(text)):
             if ref in IGNORED_EXAMPLE_REFS:
                 continue
