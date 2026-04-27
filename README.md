@@ -13,6 +13,26 @@ This repository is designed to help an agent turn vague creative requests — �
 
 ---
 
+## Installation
+
+The simplest way is via the [`skills` CLI](https://www.npmjs.com/package/skills) (requires Node.js):
+
+```bash
+npx skills add SJY051/music-composition
+```
+
+This installs to your current project's agent directory (e.g., `.claude/skills/`). Add `-g` for user-level (global) install, or `--all -y` to skip prompts.
+
+For a manual install, clone the repository and point your agent at it (or copy `SKILL.md` and the relevant subdirectories into your agent's skill folder, such as `~/.claude/skills/` or `.claude/skills/` in a project):
+
+```bash
+git clone https://github.com/SJY051/music-composition.git
+```
+
+The skill works on any harness that reads the SKILL.md format — Claude Code, Claude Agent SDK, Claude.ai (skills feature), and most other current agent platforms.
+
+---
+
 ## What this skill is for
 
 Use this skill when an AI agent needs to help with:

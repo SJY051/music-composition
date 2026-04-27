@@ -13,6 +13,26 @@ AI 작곡 어시스턴트를 위한 모듈식 지식 / 워크플로 스킬.
 
 ---
 
+## 설치
+
+가장 간단한 방법은 [`skills` CLI](https://www.npmjs.com/package/skills) 사용 (Node.js 필요):
+
+```bash
+npx skills add SJY051/music-composition
+```
+
+현재 프로젝트의 에이전트 디렉토리(예: `.claude/skills/`)에 설치된다. 사용자 전역 설치는 `-g`, 프롬프트 없이 진행하려면 `--all -y`를 추가.
+
+수동 설치 시에는 저장소를 클론한 뒤 에이전트가 참조하게 하거나, `SKILL.md`와 필요한 하위 디렉토리를 에이전트 스킬 폴더(예: `~/.claude/skills/` 또는 프로젝트의 `.claude/skills/`)로 복사한다:
+
+```bash
+git clone https://github.com/SJY051/music-composition.git
+```
+
+이 스킬은 SKILL.md 표준을 읽는 모든 하니스에서 작동한다 — Claude Code, Claude Agent SDK, Claude.ai (skills 기능), 그 외 대부분의 현재 에이전트 플랫폼 포함.
+
+---
+
 ## 이 스킬은 어디에 쓰는가
 
 AI 에이전트가 다음과 같은 작업을 도와야 할 때 사용한다:
