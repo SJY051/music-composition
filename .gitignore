@@ -13,3 +13,10 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# Benchmark raw outputs (timestamped per run; canonical eval lives in v1.0-eval.md)
+benchmarks/results/
+
+# Local env
+.env
+.env.local
