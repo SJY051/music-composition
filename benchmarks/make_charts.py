@@ -56,8 +56,11 @@ plt.rcParams["axes.spines.right"] = False
 # ------------------------------------------------------------
 
 C_NO_SKILL = "#B5B5B5"     # neutral gray — baseline
-C_SKILL = "#2C5F7C"        # deep teal-blue — skill / B / with-skill
-C_NAV = "#7A9DBF"          # mid-blue — SKILL.md + nav
+C_GLM_SKILL = "#2C5F7C"    # deep teal-blue — GLM / B / with-skill
+C_GLM_NAV = "#7A9DBF"      # mid-blue — GLM C (SKILL.md + nav)
+C_CLAUDE_SKILL = "#D97757" # Anthropic terracotta — Claude with-skill (strong)
+C_CLAUDE_SOFT = "#E8A589"  # lighter terracotta — Claude with-skill (moderate)
+C_TIE = "#D9D9D9"          # light gray — tie
 C_BG = "#FFFFFF"
 C_GRID = "#E5E5E5"
 C_TEXT = "#2A2A2A"
@@ -76,7 +79,7 @@ def chart_p8_boundary() -> None:
     # Left panel: GLM-5.1 (3 conditions)
     glm_labels = ["A\n(baseline)", "B\n(SKILL.md)", "C\n(SKILL.md + nav)"]
     glm_scores = [1, 5, 3]
-    glm_colors = [C_NO_SKILL, C_SKILL, C_NAV]
+    glm_colors = [C_NO_SKILL, C_GLM_SKILL, C_GLM_NAV]
     bars1 = ax1.bar(glm_labels, glm_scores, color=glm_colors, width=0.6, edgecolor="white")
     ax1.set_title("GLM-5.1 (Approach 1: system prompt injection)", fontsize=11, color=C_TEXT, pad=14)
     ax1.set_ylabel("Boundary respect (1–5)", fontsize=11, color=C_TEXT)
@@ -94,7 +97,7 @@ def chart_p8_boundary() -> None:
     # Right panel: Claude Opus 4.7 (2 conditions)
     cl_labels = ["A\n(no skill)", "B\n(with skill)"]
     cl_scores = [1, 5]
-    cl_colors = [C_NO_SKILL, C_SKILL]
+    cl_colors = [C_NO_SKILL, C_CLAUDE_SKILL]
     bars2 = ax2.bar(cl_labels, cl_scores, color=cl_colors, width=0.6, edgecolor="white")
     ax2.set_title("Claude Opus 4.7 (Approach 2: native lazy loading)", fontsize=11, color=C_TEXT, pad=14)
     ax2.set_ylim(0, 5.6)
@@ -135,7 +138,7 @@ def chart_glm_winners() -> None:
 
     labels = ["A (baseline)", "B (SKILL.md only)", "C (SKILL.md + nav)"]
     wins = [1, 6, 1]
-    colors = [C_NO_SKILL, C_SKILL, C_NAV]
+    colors = [C_NO_SKILL, C_GLM_SKILL, C_GLM_NAV]
     bars = ax.bar(labels, wins, color=colors, width=0.55, edgecolor="white")
 
     ax.set_title(
@@ -191,17 +194,17 @@ def chart_cross_benchmark() -> None:
     width = 0.5
     x = list(range(len(benchmarks)))
 
-    # GLM stack (bottom → top): A, C, B
+    # GLM stack (bottom → top): A, C, B — teal family for GLM
     ax.bar(x[0], glm_a, width=width, color=C_NO_SKILL, edgecolor="white")
-    ax.bar(x[0], glm_c, width=width, bottom=glm_a, color=C_NAV, edgecolor="white")
-    ax.bar(x[0], glm_b, width=width, bottom=glm_a + glm_c, color=C_SKILL, edgecolor="white")
+    ax.bar(x[0], glm_c, width=width, bottom=glm_a, color=C_GLM_NAV, edgecolor="white")
+    ax.bar(x[0], glm_b, width=width, bottom=glm_a + glm_c, color=C_GLM_SKILL, edgecolor="white")
 
-    # Claude stack (bottom → top): tie, with-skill moderate, with-skill strong
-    ax.bar(x[1], cl_tie, width=width, bottom=cl_baseline, color="#D9D9D9", edgecolor="white")
+    # Claude stack (bottom → top): tie, with-skill moderate, with-skill strong — terracotta family for Claude
+    ax.bar(x[1], cl_tie, width=width, bottom=cl_baseline, color=C_TIE, edgecolor="white")
     ax.bar(x[1], cl_with_moderate, width=width, bottom=cl_baseline + cl_tie,
-           color=C_NAV, edgecolor="white")
+           color=C_CLAUDE_SOFT, edgecolor="white")
     ax.bar(x[1], cl_with_strong, width=width, bottom=cl_baseline + cl_tie + cl_with_moderate,
-           color=C_SKILL, edgecolor="white")
+           color=C_CLAUDE_SKILL, edgecolor="white")
 
     # In-segment labels: count + condition descriptor
     def label(x_pos: int, y_center: float, count: int, name: str,
