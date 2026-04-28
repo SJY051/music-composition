@@ -35,6 +35,22 @@ git clone https://github.com/SJY051/music-composition.git
 
 ---
 
+## 실제로 작동하나요
+
+v1.0과 함께 두 가지 벤치마크가 들어가 있다:
+
+**Approach 1 (시스템 프롬프트 주입, GLM-5.1, 블라인드 평가).** `SKILL.md`를 시스템 프롬프트에 주입한 조건이 작가 편향을 통제한 블라인드 비교에서 8개 프롬프트 중 **6개**를 이김. 가장 강한 신호는 boundary 테스트(P8) — 스킬 적용 응답은 범위 밖 믹싱 질문을 명시적으로 거절했고, 베이스라인은 그냥 답함.
+
+![GLM-5.1 블라인드 평가 — 조건별 승수](./benchmarks/charts/chart_glm_winners.png)
+
+**Approach 2 (네이티브 lazy loading, Claude Opus 4.7).** Claude Desktop의 Skills 기능으로 스킬을 설치한 조건. 모델이 참조 파일을 필요 시 읽음. 가장 인상적인 부분 — 판소리 OST 조언에서 요성·퇴성·추성을 cents·ms 단위 구현값과 함께 인용. 이 값들은 `SKILL.md`나 `00-navigation.md`엔 없고 `references/genres/korean-traditional.md`에만 있는 정보라, 모델이 스킬 전체 콘텐츠를 *실제로* 활용했다는 직접 증거다.
+
+![두 벤치마크에서의 P8 boundary respect](./benchmarks/charts/chart_p8_boundary.png)
+
+종합하자면 — **약한 모델 / 약한 메커니즘에서도 스킬 콘텐츠가 행동을 형성하고, 강한 모델 / 강한 메커니즘에서는 콘텐츠 깊이까지 잠금 해제된다.** 메소돌로지와 프롬프트별 분석: [`benchmarks/v1.0-eval.md`](./benchmarks/v1.0-eval.md), [`benchmarks/v1.0-claude.md`](./benchmarks/v1.0-claude.md).
+
+---
+
 ## 이 스킬은 어디에 쓰는가
 
 AI 에이전트가 다음과 같은 작업을 도와야 할 때 사용한다:

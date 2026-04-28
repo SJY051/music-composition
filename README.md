@@ -35,6 +35,22 @@ The skill follows the open **Agent Skills standard** — the SKILL.md + YAML fro
 
 ---
 
+## Does it work?
+
+Two benchmarks ship with v1.0:
+
+**Approach 1 (system-prompt injection, GLM-5.1, blind eval).** With `SKILL.md` prepended to the system prompt, the skill version wins **6 of 8** representative composition prompts in an author-bias-controlled blind comparison. The strongest signal is the boundary test (P8) — the skill version explicitly declines an out-of-scope mixing question while the baseline answers freely.
+
+![GLM-5.1 blind evaluation — wins per condition](./benchmarks/charts/chart_glm_winners.png)
+
+**Approach 2 (native lazy loading, Claude Opus 4.7).** With the skill installed via Claude Desktop's Skills feature, the model reads references on demand. Most striking: pansori OST advice cites *yoseong*, *toeseong*, *chuseong* with cents-and-milliseconds implementation values that exist only inside `references/genres/korean-traditional.md` — direct evidence the model used the skill's full content, not just `SKILL.md`.
+
+![P8 boundary respect across both benchmarks](./benchmarks/charts/chart_p8_boundary.png)
+
+Together: **the skill content shapes behavior even on weaker setups, and content depth unlocks on stronger setups.** Full methodology and per-prompt analysis: [`benchmarks/v1.0-eval.md`](./benchmarks/v1.0-eval.md), [`benchmarks/v1.0-claude.md`](./benchmarks/v1.0-claude.md).
+
+---
+
 ## What this skill is for
 
 Use this skill when an AI agent needs to help with:
